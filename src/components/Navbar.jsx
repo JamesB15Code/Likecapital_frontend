@@ -5,7 +5,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 shadow-lg">
+    <nav className="bg-indigo-600  shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -21,10 +21,10 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              to="/about"
+              to="/users"
               className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
             >
-              Contact
+              Users
             </Link>
             <Link
               to="/about"
@@ -69,7 +69,7 @@ const Navbar = () => {
 
       {/* Menú desplegable en móviles */}
       {menuOpen && (
-        <div className="md:hidden bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 p-4 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out">
+        <div className="md:hidden bg-indigo-600    p-4 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out">
           <div className="space-y-4">
             <Link
               to="/"
