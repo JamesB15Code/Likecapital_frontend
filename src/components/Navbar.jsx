@@ -1,18 +1,27 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../services/AuthContext'; // Importamos el contexto
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useContext(AuthContext); // Estado de autenticación y función logout
+  const navigate = useNavigate(); // Para redirigir al usuario después de cerrar sesión
+  const [menuOpen, setMenuOpen] = useState(false); // Control del menú móvil
+
+  const handleLogout = () => {
+    logout(); // Llamamos a la función logout del contexto
+    navigate('/login'); // Redirigimos al login
+    setMenuOpen(false); // Cerramos el menú móvil
+  };
 
   return (
-    <nav className="bg-indigo-600  shadow-lg">
+    <nav className="bg-indigo-600 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="text-white text-3xl font-extrabold hover:text-indigo-300 transition duration-300">
             <Link to="/">Likecapital</Link>
           </div>
 
+          {/* Menú para pantallas grandes */}
           <div className="hidden md:flex space-x-8">
             <Link
               to="/"
@@ -32,24 +41,33 @@ const Navbar = () => {
             >
               About
             </Link>
-            <Link
-              to="/login"
-              className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
-            >
-               Login
-            </Link>
+            {isAuthenticated ? (
+              <button
+                onClick={handleLogout}
+                className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
-          {/* Icono de menú en móviles */}
+          {/* Icono del menú móvil */}
           <div className="md:hidden">
             <button
               type="button"
               className="text-white focus:outline-none"
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Open Menu"
+              aria-label="Toggle menu"
             >
               <svg
-                className={`w-6 h-6 transition-transform duration-300 ${menuOpen ? 'rotate-45' : ''}`}
+                className={`w-6 h-6 transition-transform ${menuOpen ? 'rotate-90' : ''}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -60,45 +78,54 @@ const Navbar = () => {
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
-                ></path>
+                />
               </svg>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Menú desplegable en móviles */}
+      {/* Menú desplegable para pantallas pequeñas */}
       {menuOpen && (
-        <div className="md:hidden bg-indigo-600    p-4 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out">
+        <div className="md:hidden bg-indigo-600 p-4 rounded-lg shadow-lg">
           <div className="space-y-4">
             <Link
               to="/"
-              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600 transition duration-300"
+              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
               onClick={() => setMenuOpen(false)}
             >
               Home
             </Link>
             <Link
+              to="/users"
+              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+              onClick={() => setMenuOpen(false)}
+            >
+              Users
+            </Link>
+            <Link
               to="/about"
-              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600 transition duration-300"
+              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
               onClick={() => setMenuOpen(false)}
             >
               About
             </Link>
-            <Link
-              to="/contact"
-              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600 transition duration-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <Link
-              to="/login"
-              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600 transition duration-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              Login
-            </Link>
+            {isAuthenticated ? (
+              <button
+                onClick={handleLogout}
+                className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       )}
