@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-indigo-600 shadow-lg">
+    <nav className="bg-blue-600 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-white text-3xl font-extrabold hover:text-indigo-300 transition duration-300">
@@ -25,33 +25,33 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-8">
             <Link
               to="/"
-              className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
+              className="text-white hover:text-white transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
             >
               Home
             </Link>
             <Link
               to="/users"
-              className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
+              className="text-white hover:text-white transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
             >
               Users
             </Link>
             <Link
               to="/about"
-              className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
+              className="text-white hover:text-white transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
             >
               About
             </Link>
             {isAuthenticated ? (
               <button
                 onClick={handleLogout}
-                className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
+                className="text-white hover:text-white transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
               >
                 Logout
               </button>
             ) : (
               <Link
                 to="/login"
-                className="text-white hover:text-indigo-300 transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-600"
+                className="text-white hover:text-white transition duration-300 text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
               >
                 Login
               </Link>
@@ -87,25 +87,25 @@ const Navbar = () => {
 
       {/* Menú desplegable para pantallas pequeñas */}
       {menuOpen && (
-        <div className="md:hidden bg-indigo-600 p-4 rounded-lg shadow-lg">
+        <div className="md:hidden bg-blue-600 p-4 rounded-lg shadow-lg">
           <div className="space-y-4">
             <Link
               to="/"
-              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
               onClick={() => setMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/users"
-              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
               onClick={() => setMenuOpen(false)}
             >
               Users
             </Link>
             <Link
               to="/about"
-              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+              className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
               onClick={() => setMenuOpen(false)}
             >
               About
@@ -113,14 +113,14 @@ const Navbar = () => {
             {isAuthenticated ? (
               <button
                 onClick={handleLogout}
-                className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+                className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
               >
                 Logout
               </button>
             ) : (
               <Link
                 to="/login"
-                className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-indigo-700"
+                className="block text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-blue-700"
                 onClick={() => setMenuOpen(false)}
               >
                 Login

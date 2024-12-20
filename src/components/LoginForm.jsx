@@ -31,9 +31,9 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100 px-4 md:px-0">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 md:px-0">
       <div className="w-full max-w-sm p-6 md:p-8 bg-white shadow-lg rounded-lg">
-        <h2 className="text-2xl font-semibold text-center mb-6">Iniciar Sesión</h2>
+        <h2 className="text-2xl font-semibold text-blue-800 text-center mb-6">Iniciar Sesión</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -69,7 +69,7 @@ const LoginForm = () => {
 
           <button
             type="submit"
-            className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-500 transition-all"
+            className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-800 transition-all"
           >
             Iniciar Sesión
           </button>
